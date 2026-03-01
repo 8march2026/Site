@@ -64,7 +64,6 @@
 }
 
 .girl-card {
-  height: 600px;
   background: white;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -342,3 +341,4 @@
     bottom: -20px;
   }
 }
+
