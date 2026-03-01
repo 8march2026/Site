@@ -1,0 +1,344 @@
+@import "./variables.css";
+
+.cards-section {
+  padding: var(--space-3xl) 0;
+  background: white;
+  position: relative;
+  animation: fadeInUp 1s ease-out;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-2xl);
+  font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding-bottom: var(--space-md);
+}
+
+.section-subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--color-primary);
+  opacity: 0.3;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.girl-card {
+  height: 600px;
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-slow);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transform-origin: center;
+  animation: cardAppear 0.5s ease forwards;
+  opacity: 0;
+}
+
+.girl-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.girl-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.girl-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.girl-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.girl-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.girl-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.girl-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.girl-card:nth-child(8) {
+  animation-delay: 0.8s;
+}
+.girl-card:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
+.girl-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+  z-index: 2;
+}
+
+.girl-card:hover::before {
+  transform: scaleX(1);
+}
+
+.girl-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-image-container {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--gradient-soft);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform var(--transition-slow);
+}
+
+.girl-card:hover .card-image {
+  transform: scale(1.1);
+}
+
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.girl-card:hover .card-image-overlay {
+  opacity: 1;
+}
+
+.card-info {
+  padding: var(--space-lg);
+  background: var(--gradient-card);
+}
+
+.card-name {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text);
+  position: relative;
+  display: inline-block;
+  transition: color var(--transition-base);
+}
+
+.girl-card:hover .card-name {
+  color: var(--color-primary);
+}
+
+.card-name::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.girl-card:hover .card-name::after {
+  transform: scaleX(1);
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.card-tags {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.card-tag {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  background: var(--gradient-soft);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.card-tag:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: scale(1.05) rotate(2deg);
+}
+
+.card-button {
+  width: 100%;
+  padding: var(--space-sm);
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all var(--transition-slow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+.card-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.card-button:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Эффект для букв имени */
+.card-name span {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.girl-card:hover .card-name span {
+  animation: wave 0.3s ease forwards;
+}
+
+.girl-card:hover .card-name span:nth-child(1) {
+  animation-delay: 0s;
+}
+.girl-card:hover .card-name span:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.girl-card:hover .card-name span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.girl-card:hover .card-name span:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.girl-card:hover .card-name span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.girl-card:hover .card-name span:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.girl-card:hover .card-name span:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.girl-card:hover .card-name span:nth-child(8) {
+  animation-delay: 0.35s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cards-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .card-info {
+    padding: var(--space-md);
+  }
+
+  .card-name {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-grid {
+    gap: var(--space-md);
+  }
+
+  .card-tag {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+  }
+
+  .section-title::after {
+    font-size: 1.4rem;
+    bottom: -20px;
+  }
+}

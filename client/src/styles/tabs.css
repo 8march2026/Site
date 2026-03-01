@@ -1,0 +1,325 @@
+@import "./variables.css";
+
+.tabs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.tabs-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  padding: var(--space-xs);
+  background: var(--gradient-soft);
+  border-radius: 50px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-button {
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  border-radius: 40px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  overflow: hidden;
+}
+
+.tab-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  border-radius: 40px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all var(--transition-base);
+  z-index: 0;
+}
+
+.tab-button:hover::before {
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-button:hover {
+  color: var(--color-text);
+}
+
+.tab-button.active {
+  color: var(--color-text);
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-button.active::before {
+  display: none;
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tab-title {
+  position: relative;
+  z-index: 1;
+}
+
+.tab-active-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.tab-content {
+  min-height: 400px;
+  margin-top: var(--space-xl);
+}
+
+/* Стили для вкладки с поздравлениями */
+.congrats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.congrats-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.congrats-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, rgba(255, 158, 181, 0.05), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.congrats-item:hover::after {
+  opacity: 1;
+}
+
+.congrats-left {
+  flex-direction: row;
+}
+
+.congrats-right {
+  flex-direction: row-reverse;
+}
+
+.congrats-image-container {
+  width: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.congrats-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.congrats-text-container {
+  flex: 2;
+  padding: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.congrats-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  font-style: italic;
+  margin: 0;
+  position: relative;
+}
+
+/* Стили для воспоминаний */
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.memory-card {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-bounce);
+  position: relative;
+}
+
+.memory-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.memory-image-container {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+}
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.memory-card:hover .memory-image {
+  transform: scale(1.08);
+}
+
+.memory-info {
+  padding: var(--space-lg);
+  background: white;
+  position: relative;
+}
+
+.memory-date {
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+}
+
+.memory-title {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text);
+  position: relative;
+  display: inline-block;
+}
+
+.memory-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.memory-card:hover .memory-title::after {
+  transform: scaleX(1);
+}
+
+.memory-description {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .tabs-header {
+    border-radius: 30px;
+  }
+
+  .tab-button {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.9rem;
+  }
+
+  .congrats-item,
+  .congrats-left,
+  .congrats-right {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-md);
+  }
+
+  .congrats-image-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .congrats-text::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .congrats-text::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .memory-info {
+    padding: var(--space-md);
+  }
+
+  .memory-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-header {
+    gap: 4px;
+  }
+
+  .tab-button {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8rem;
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  .congrats-text {
+    font-size: 1rem;
+  }
+
+  .memories-grid {
+    gap: var(--space-md);
+  }
+}

@@ -1,0 +1,144 @@
+@import "./variables.css";
+
+.tabs-section {
+  padding: var(--space-3xl) 0;
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.tabs-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  opacity: 0.2;
+}
+
+.tabs-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-secondary),
+    transparent
+  );
+  opacity: 0.2;
+}
+
+.tabs-section .section-title {
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.title-flower {
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+.title-flower:first-child {
+  animation-delay: 0s;
+}
+
+.title-flower:last-child {
+  animation-delay: 1.5s;
+}
+
+.tabs-section .section-subtitle {
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-2xl);
+  font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding-bottom: var(--space-md);
+}
+
+.tabs-section .section-subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--color-primary);
+  opacity: 0.3;
+}
+
+/* Декоративные элементы для фона */
+.tabs-section .container {
+  position: relative;
+  z-index: var(--z-default);
+}
+
+.tabs-section .container::before {
+  top: -20px;
+  left: -20px;
+  transform: rotate(-15deg);
+}
+
+.tabs-section .container::after {
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(15deg);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .tabs-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .tabs-section .section-title {
+    gap: var(--space-sm);
+  }
+
+  .title-flower {
+    font-size: 1.5rem;
+  }
+
+  .tabs-section .section-subtitle {
+    font-size: 1rem;
+    padding: 0 var(--space-md) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-section .section-title {
+    flex-wrap: wrap;
+  }
+
+  .title-flower {
+    font-size: 1.2rem;
+  }
+
+  .tabs-section .container::before,
+  .tabs-section .container::after {
+    font-size: 1.5rem;
+  }
+}
